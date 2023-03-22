@@ -1,1 +1,1 @@
-# coords-fmt
+Go Coordinates Formatter
