@@ -36,8 +36,8 @@ func float64ToString(n float64, precision int) string {
 	return fmt.Sprintf(fmt.Sprintf("%%.%df", precision), math.Round(n*s)/s)
 }
 
-// float64TIntString truncates a float64 to string
-func float64TIntString(n float64) string { return fmt.Sprintf("%d", int64(n)) }
+// float64ToIntString truncates a float64 to string
+func float64ToIntString(n float64) string { return fmt.Sprintf("%d", int64(n)) }
 
 func (c *coords) computeFor(origValue float64) values {
 	v := values{
@@ -79,17 +79,17 @@ const (
 func (c *coords) formatFor(v values, layout string, symbol string) string {
 	m := map[bool]string{true: "-"}
 	return strings.NewReplacer(
-		"DD", float64TIntString(v.degreesInt)+unitDegrees,
+		"DD", float64ToIntString(v.degreesInt)+unitDegrees,
 		"dd", float64ToString(v.degrees, c.o.Precision)+unitDegrees,
-		"D", float64TIntString(v.degreesInt),
+		"D", float64ToIntString(v.degreesInt),
 		"d", float64ToString(v.degrees, c.o.Precision),
-		"MM", float64TIntString(v.minutesInt)+unitMinutes,
+		"MM", float64ToIntString(v.minutesInt)+unitMinutes,
 		"mm", float64ToString(v.minutes, c.o.Precision)+unitMinutes,
-		"M", float64TIntString(v.minutesInt),
+		"M", float64ToIntString(v.minutesInt),
 		"m", float64ToString(v.minutes, c.o.Precision),
-		"SS", float64TIntString(v.secondsInt)+unitSeconds,
+		"SS", float64ToIntString(v.secondsInt)+unitSeconds,
 		"ss", float64ToString(v.seconds, c.o.Precision)+unitSeconds,
-		"S", float64TIntString(v.secondsInt),
+		"S", float64ToIntString(v.secondsInt),
 		"s", float64ToString(v.seconds, c.o.Precision),
 		"-", m[v.origValue < 0],
 		"X", symbol,
