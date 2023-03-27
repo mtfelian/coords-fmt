@@ -54,6 +54,14 @@ var _ = Describe("GeoFormatCoords", func() {
 				sLat:    `S35°16'55"`,
 				options: crdfmt.Options{Precision: 0},
 			},
+			{
+				lon:     0,
+				lat:     0,
+				layout:  "XDDMMSS",
+				sLon:    `W0°0'0"`,
+				sLat:    `S0°0'0"`,
+				options: crdfmt.Options{Precision: 0},
+			},
 		} {
 			rLon, rLat := crdfmt.GeoFormatCoords(tc.lon, tc.lat, tc.layout, tc.options)
 			Expect(rLon).To(Equal(tc.sLon), "rLon at i=%d", i)

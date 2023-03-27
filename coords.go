@@ -1,4 +1,3 @@
-// Package crdfmt inspired by https://github.com/nerik/formatcoords
 package crdfmt
 
 import (
